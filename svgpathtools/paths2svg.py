@@ -349,8 +349,11 @@ def disvg(paths=None, colors=None, filename=None, stroke_widths=None,
             else:  # assume this path, p, was input as a Path d-string
                 ps = p
 
-            if attributes:
+            if ((attributes is not None) and len(attributes)>i):
                 good_attribs = {'d': ps}
+                assert i==0
+                assert attributes
+                assert attributes[i]
                 for key in attributes[i]:
                     val = attributes[i][key]
                     if key != 'd':
